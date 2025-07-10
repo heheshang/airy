@@ -1,0 +1,17 @@
+[package]
+name = "airy-core"
+version = "0.1.0"
+edition = "2024"
+resolver = "3"
+publish = false
+
+
+[dependencies]
+arc-swap = "1.7.1"
+chrono = { workspace = true }
+itertools = "0.14"
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+tokio = { version = "1", features = ["rt", "macros"] }
+tracing = { workspace = true }
