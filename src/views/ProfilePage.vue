@@ -3,22 +3,44 @@
     <div class="profile-page">
       <button class="back-btn" @click="goBack">← 返回</button>
       <h2>个人资料</h2>
-      <div class="profile-info">
-        <p><strong>用户名：</strong> demo_user</p>
-        <p><strong>邮箱：</strong> demo@example.com</p>
-        <p><strong>简介：</strong> 这里是用户简介信息。</p>
+      <div v-if="loading">加载中...</div>
+      <div v-else-if="error" class="error">{{ error }}</div>
+      <div v-else-if="user" class="profile-info">
+        <p><strong>用户名：</strong> {{ user.username }}</p>
+        <p><strong>邮箱：</strong> {{ user.email }}</p>
+        <p><strong>简介：</strong> {{ user.bio }}</p>
       </div>
     </div>
   </MainLayout>
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
 import MainLayout from '@/layouts/MainLayout.vue'
 import { useRouter } from 'vue-router'
+import { fetchUserProfile } from '@/api/user'
+
 const router = useRouter()
 function goBack() {
   router.back()
 }
+
+const user = ref<{ username: string; email: string; bio: string } | null>(null)
+const loading = ref(true)
+const error = ref('')
+
+onMounted(async () => {
+  loading.value = true
+  error.value = ''
+  try {
+    const res = await fetchUserProfile()
+    user.value = res.data || res // 视后端返回结构调整
+  } catch (e: any) {
+    error.value = e.message || '获取用户信息失败'
+  } finally {
+    loading.value = false
+  }
+})
 </script>
 
 <style scoped>
