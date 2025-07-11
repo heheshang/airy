@@ -4,7 +4,12 @@
   "version": "0.1.0",
   "type": "module",
   "description": "A modern mobile application built with Tauri and Vue.js",
-  "keywords": ["tauri", "vue", "mobile", "desktop"],
+  "keywords": [
+    "tauri",
+    "vue",
+    "mobile",
+    "desktop"
+  ],
   "author": "Airy Team",
   "license": "MIT",
   "scripts": {
@@ -20,30 +25,30 @@
     "type-check": "vue-tsc --noEmit"
   },
   "dependencies": {
-    "@tauri-apps/api": "^2",
-    "@tauri-apps/plugin-opener": "^2",
-    "@tauri-apps/plugin-shell": "^2",
-    "@tauri-apps/plugin-dialog": "^2",
-    "@tauri-apps/plugin-notification": "^2",
+    "@tauri-apps/api": "^2.6.0",
+    "@tauri-apps/plugin-dialog": "^2.3.0",
+    "@tauri-apps/plugin-notification": "^2.3.0",
+    "@tauri-apps/plugin-opener": "^2.4.0",
+    "@tauri-apps/plugin-shell": "^2.3.0",
     "axios": "^1.10.0",
     "pinia": "^3.0.3",
     "sass-embedded": "^1.89.2",
-    "vue": "^3.5.13",
+    "vue": "^3.5.17",
     "vue-i18n": "^11.1.9",
     "vue-router": "^4.5.1",
-    "vue-touch-events": "^2.0.0"
+    "vue3-touch-events": "^5.0.13"
   },
   "devDependencies": {
-    "@tauri-apps/cli": "^2",
-    "@types/node": "^24.0.12",
-    "@vitejs/plugin-vue": "^5.2.1",
-    "@typescript-eslint/eslint-plugin": "^7.0.0",
-    "@typescript-eslint/parser": "^7.0.0",
-    "eslint": "^8.57.0",
-    "eslint-plugin-vue": "^9.0.0",
-    "terser": "^5.29.0",
-    "typescript": "~5.6.2",
-    "vite": "^6.0.3",
-    "vue-tsc": "^2.1.10"
+    "@tauri-apps/cli": "^2.6.2",
+    "@types/node": "^24.0.13",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "@vitejs/plugin-vue": "^5.2.4",
+    "eslint": "9.30.1",
+    "eslint-plugin-vue": "10.3.0",
+    "terser": "^5.43.1",
+    "typescript": "~5.6.3",
+    "vite": "^6.3.5",
+    "vue-tsc": "^2.2.12"
   }
 }
