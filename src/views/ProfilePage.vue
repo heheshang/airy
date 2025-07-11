@@ -6,9 +6,9 @@
       <div v-if="loading">加载中...</div>
       <div v-else-if="error" class="error">{{ error }}</div>
       <div v-else-if="user" class="profile-info">
-        <p><strong>用户名：</strong> {{ user.username }}</p>
+        <p><strong>用户名：</strong> {{ user.name }}</p>
         <p><strong>邮箱：</strong> {{ user.email }}</p>
-        <p><strong>简介：</strong> {{ user.bio }}</p>
+        <p><strong>角色：</strong> {{ user.role}}</p>
       </div>
     </div>
   </MainLayout>
@@ -18,14 +18,14 @@
 import { ref, onMounted } from 'vue'
 import MainLayout from '@/layouts/MainLayout.vue'
 import { useRouter } from 'vue-router'
-import { fetchUserProfile } from '@/api/user'
+import { fetchUserProfile, UserProfile } from '@/api/user'
 
 const router = useRouter()
 function goBack() {
   router.back()
 }
 
-const user = ref<{ username: string; email: string; bio: string } | null>(null)
+const user = ref<UserProfile | null>(null)
 const loading = ref(true)
 const error = ref('')
 
@@ -34,7 +34,7 @@ onMounted(async () => {
   error.value = ''
   try {
     const res = await fetchUserProfile()
-    user.value = res.data || res // 视后端返回结构调整
+    user.value = res // 视后端返回结构调整
   } catch (e: any) {
     error.value = e.message || '获取用户信息失败'
   } finally {

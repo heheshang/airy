@@ -1,11 +1,12 @@
 <template>
   <div class="main-layout">
     <div class="layout-body">
-      <aside class="sidebar">
+      <aside v-if="isLoggedIn" class="sidebar">
         <ul>
-          <li><router-link to="/dashboard">🏠 首页</router-link></li>
-          <li><router-link to="/profile">👤 个人资料</router-link></li>
-          <li><router-link to="/settings">⚙️ 设置</router-link></li>
+          <li><router-link to="/dashboard">🏠 Home</router-link></li>
+          <li><router-link to="/profile">👤 Profile</router-link></li>
+          <li><router-link to="/settings">⚙️ Settings</router-link></li>
+          <li><router-link to="/logout" @click="logout">🚪 Logout</router-link></li>
         </ul>
       </aside>
       <main class="main-content">
@@ -16,7 +17,18 @@
 </template>
 
 <script setup lang="ts">
-// 可添加全局导航、侧边栏等
+import { useRouter } from 'vue-router';
+import { useAuthStore } from '../stores/auth';
+import { computed } from 'vue';
+
+const router = useRouter();
+const authStore = useAuthStore();
+const isLoggedIn = computed(() => authStore.isLoggedIn);
+
+function logout() {
+  authStore.logout();
+  router.push('/login');
+}
 </script>
 
 <style scoped>

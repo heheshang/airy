@@ -5,6 +5,9 @@ import ProfilePage from '@/views/ProfilePage.vue'
 import SettingsPage from '@/views/SettingsPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
+  {
+    path: '/', component: LoginPage
+  },
   { path: '/login', name: 'Login', component: LoginPage },
   { path: '/dashboard', name: 'Dashboard', component: DashboardPage },
   { path: '/profile', name: 'Profile', component: ProfilePage },

@@ -6,5 +6,4 @@ pub enum Error {
     NoError,
 }
 
-
 pub type Result<T> = std::result::Result<T, Error>;

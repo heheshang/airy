@@ -1,7 +1,6 @@
 <script setup lang="ts">
-// App 入口
-</script>
 
+</script>
 
 <template>
   <router-view />
