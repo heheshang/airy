@@ -1,0 +1,99 @@
+// 移动端断点
+$mobile-xs: 320px;
+$mobile-sm: 375px;
+$mobile-md: 414px;
+$mobile-lg: 768px;
+$tablet: 1024px;
+$desktop: 1200px;
+
+// 微信风格颜色变量
+$primary-color: #07C160;
+$primary-hover: #06ad56;
+$primary-light: #e8f5e8;
+$primary-dark: #059c4e;
+
+$success-color: #52c41a;
+$warning-color: #faad14;
+$error-color: #ff4d4f;
+$info-color: #1890ff;
+
+$text-primary: #000000;
+$text-secondary: #666666;
+$text-tertiary: #999999;
+$text-disabled: #cccccc;
+
+$background-primary: #ffffff;
+$background-secondary: #f7f7f7;
+$background-tertiary: #f0f0f0;
+
+$border-color: #e5e5e5;
+$border-light: #f0f0f0;
+$border-dark: #d9d9d9;
+
+// 阴影
+$shadow-light: 0 2px 8px rgba(0, 0, 0, 0.04);
+$shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.08);
+$shadow-heavy: 0 8px 32px rgba(0, 0, 0, 0.12);
+
+// 圆角
+$radius-small: 4px;
+$radius-medium: 8px;
+$radius-large: 12px;
+$radius-xl: 16px;
+$radius-2xl: 20px;
+
+// 间距
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 12px;
+$spacing-lg: 16px;
+$spacing-xl: 20px;
+$spacing-2xl: 24px;
+$spacing-3xl: 32px;
+$spacing-4xl: 40px;
+
+// 字体大小
+$font-size-xs: 10px;
+$font-size-sm: 12px;
+$font-size-md: 14px;
+$font-size-lg: 16px;
+$font-size-xl: 18px;
+$font-size-2xl: 20px;
+$font-size-3xl: 24px;
+$font-size-4xl: 28px;
+
+// 字体粗细
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// 行高
+$line-height-tight: 1.25;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.75;
+
+// 移动端特殊变量
+$mobile-header-height: 44px;
+$mobile-tabbar-height: 50px;
+$mobile-safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+$mobile-safe-area-inset-top: env(safe-area-inset-top, 0px);
+
+// 动画
+$transition-fast: 0.15s ease;
+$transition-normal: 0.2s ease;
+$transition-slow: 0.3s ease;
+
+// Z-index层级
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;
+
+// 移动端优化
+$touch-target-size: 44px; // 最小触摸目标尺寸
+$mobile-max-width: 414px; // 移动端最大宽度 

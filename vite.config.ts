@@ -17,8 +17,38 @@ export default defineConfig({
   server: {
     port: 1420,
     strictPort: true,
+    host: true, // 允许外部访问
     watch: {
       ignored: ["**/src-tauri/**"],
     },
+  },
+  build: {
+    target: 'es2015', // 更好的移动端兼容性
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['vue', 'vue-router', 'pinia'],
+          utils: ['axios'],
+        },
+      },
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@/styles/variables.scss";`,
+      },
+    },
+  },
+  define: {
+    __VUE_OPTIONS_API__: true,
+    __VUE_PROD_DEVTOOLS__: false,
   },
 });
