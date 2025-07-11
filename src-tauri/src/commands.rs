@@ -1,6 +1,7 @@
 // TODO: Implement commands here
 
 use tauri::command;
+use airy_core::Result;
 
 #[command]
 pub(crate) fn greet(name: &str) -> String {
@@ -14,24 +15,8 @@ pub struct UserInfo {
     pub role: String,
 }
 
-#[derive(Debug, thiserror::Error)]
-pub enum Error {
-    #[error("unexpected request body")]
-    RequestBodyMustBeRaw,
-    #[error("missing `{0}` header")]
-    MissingHeader(&'static str),
-}
-impl serde::Serialize for Error {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: serde::ser::Serializer,
-    {
-        serializer.serialize_str(self.to_string().as_ref())
-    }
-}
-
 #[command]
-pub fn fetch_user_profile() -> Result<UserInfo, Error> {
+pub(crate)  fn fetch_user_profile() -> Result<UserInfo> {
     let data = UserInfo {
         name: "1234".to_string(),
         email: "1234".to_string(),
