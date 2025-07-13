@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import LoginPage from '@/views/login/LoginPage.vue';
 import DashboardPage from '@/views/dashboard/DashboardPage.vue';
+import ChatPage from '@/views/chat/ChatPage.vue';
 import { useAuthStore } from '@/store/auth';
 
 const routes: Array<RouteRecordRaw> = [
@@ -21,12 +22,20 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
+    path: '/chat',
+    name: 'chat',
+    component: ChatPage,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
     path: '/',
     redirect: '/login'
   },
   {
     path: '/:pathMatch(.*)*',
-    redirect: '/login'
+    redirect: '/chat'
   }
 ];
 
@@ -46,7 +55,7 @@ router.beforeEach((to, from, next) => {
   } 
   // 如果用户已登录且尝试访问登录页，则重定向到dashboard
   else if (to.name === 'login' && isAuthenticated) {
-    next('/dashboard');
+    next('/chat');
   } 
   else {
     next();

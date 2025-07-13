@@ -1,5 +1,5 @@
 <template>
-  <MobileLayout title="登录">
+  <SlackLayout title="登录">
     <div class="login-page">
       <div class="login-card card">
         <h2 class="login-title">欢迎回来</h2>
@@ -39,14 +39,14 @@
         </form>
       </div>
     </div>
-  </MobileLayout>
+  </SlackLayout>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/store/auth';
-import MobileLayout from '@/layout/MobileLayout.vue';
+import SlackLayout from '@/layout/SlackLayout.vue';
 
 const username = ref('');
 const password = ref('');
