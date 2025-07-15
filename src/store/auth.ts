@@ -1,12 +1,20 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 
+export interface User {
+  user_id: string
+  username: string
+  display_name: string
+  email: string
+  avatar_url?: string
+}
+
 export const useAuthStore = defineStore('auth', () => {
-  const token = ref(localStorage.getItem('token') || '')
-  const user = ref(null)
+  const token = ref<string>(localStorage.getItem('token') || '')
+  const user = ref<User | null>(null)
   const isLoggedIn = computed(() => !!token.value)
 
-  const login = (userToken: string, userData: any) => {
+  const login = (userToken: string, userData: User) => {
     token.value = userToken
     user.value = userData
     localStorage.setItem('token', userToken)
@@ -26,9 +34,17 @@ export const useAuthStore = defineStore('auth', () => {
     
     if (storedToken && storedUser) {
       token.value = storedToken
-      user.value = JSON.parse(storedUser)
+      try {
+        user.value = JSON.parse(storedUser)
+      } catch (error) {
+        console.error('Failed to parse stored user data:', error)
+        logout()
+      }
     }
   }
+
+  // 初始化时检查认证状态
+  checkAuth()
 
   return {
     token,
@@ -38,4 +54,4 @@ export const useAuthStore = defineStore('auth', () => {
     logout,
     checkAuth
   }
-}) 
+})

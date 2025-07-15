@@ -46,6 +46,7 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '@/store/auth';
+import type { User } from '@/store/auth';
 import SlackLayout from '@/layout/SlackLayout.vue';
 
 const username = ref('');
@@ -61,10 +62,22 @@ const handleLogin = async () => {
   errorMessage.value = '';
 
   try {
-    // 调用登录API或验证凭据
-    await authStore.login(username.value, password.value);
-    // 登录成功后跳转到dashboard
-    router.push('/dashboard');
+    // 模拟登录验证 - 实际项目中应该调用真实的API
+    if (username.value && password.value) {
+      const mockToken = 'mock-jwt-token-' + Date.now();
+      const mockUser: User = {
+        user_id: 'user-' + Date.now(),
+        username: username.value,
+        display_name: username.value,
+        email: username.value + '@example.com'
+      };
+      
+      authStore.login(mockToken, mockUser);
+      // 登录成功后跳转到chat页面
+      router.push('/chat');
+    } else {
+      throw new Error('用户名和密码不能为空');
+    }
   } catch (err) {
     errorMessage.value = err instanceof Error ? err.message : '登录失败，请检查用户名和密码';
   } finally {
